@@ -1,0 +1,25 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body header {
+    border: 2px solid black;
+    background: transparent;
+    backdrop-filter: blur(20px);
+}
+body {
+    background: url("../images/stadium.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+nav a {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    text-align: center;
+    width: 20%;
+}
+nav a.ici{
+	color : black;
+}

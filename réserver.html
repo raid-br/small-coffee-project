@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Réserver - FanWay Travel</title>
-        <link rel="stylesheet" href="./styles/réserver.css">
+        <link rel="stylesheet" href="./styles/réserve.css">
     </head>
     <body>
         <header>
@@ -17,5 +17,96 @@
                 </ul>
             </nav>
         </header>
+        <main>
+            <section class="reservation-container">
+                <h2>Réservez votre voyage sportif</h2>
+                <p>Commencez par sélectionner le type d'événement qui vous intéresse.</p>
+
+                <form id="booking-form" action="/etape-suivante" method="post">
+
+                    <fieldset class="sport-selection">
+                        <legend>1. Choisissez un sport</legend>
+
+                        <div class="sport-options">
+
+                            <div class="sport-card">
+                                <input type="radio" id="sport-football" name="sport_event" value="football" required>
+                                <label for="sport-football" class="event-label">
+                                    <span class="event-title">Football</span>
+                                    <span class="event-desc">Coupes du Monde, Ligues des Champions, etc.</span>
+                                </label>
+                            </div>
+
+                            <div class="sport-card">
+                                <input type="radio" id="sport-baseball" name="sport_event" value="baseball">
+                                <label for="sport-baseball" class="event-label">
+                                    <span class="event-title">Baseball</span>
+                                    <span class="event-desc">World Series, MLB All-Star Game, etc.</span>
+                                </label>
+                            </div>
+
+                            <div class="sport-card">
+                                <input type="radio" id="sport-basket" name="sport_event" value="basket">
+                                <label for="sport-basket" class="event-label">
+                                    <span class="event-title">Basketball</span>
+                                    <span class="event-desc">Finales NBA, Tournois Olympiques, etc.</span>
+                                </label>
+                            </div>
+
+                            <div class="sport-card">
+                                <input type="radio" id="sport-tennis" name="sport_event" value="tennis">
+                                <label for="sport-tennis" class="event-label">
+                                    <span class="event-title">Tennis</span>
+                                    <span class="event-desc">Grands Chelems, Masters 1000, etc.</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <fieldset class="event-selection">
+                        <legend>2. Choisissez l'evenement'</legend>
+
+                        <div class="event-options">
+
+                            <div class="event-card">
+                                <input type="radio" id="sport-football" name="sport_event" value="football" required>
+                                <label for="sport-football" class="event-label">
+                                    <span class="event-title">Coupes du Monde</span>
+                                </label>
+                            </div>
+
+                            <div class="event-card">
+                                <input type="radio" id="sport-football" name="sport_event" value="football" required>
+                                <label for="sport-football" class="event-label">
+                                    <span class="event-title">LDC</span>
+                                </label>
+                            </div>
+
+                            <div class="event-card">
+                                <input type="radio" id="sport-football" name="sport_event" value="football" required>
+                                <label for="sport-football" class="event-label">
+                                    <span class="event-title">CE</span>
+                                </label>
+                            </div>
+
+                            <div class="event-card">
+                                <input type="radio" id="sport-football" name="sport_event" value="football" required>
+                                <label for="sport-football" class="event-label">
+                                    <span class="event-title">COPA</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-actions">
+                        <button type="submit">Suivant</button>
+                    </div>
+
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 FanWay Travel. Tous droits réservés.</p>
+        </footer>
     </body>
 </html>

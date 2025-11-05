@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - FanWay Travel</title>
+    <link rel="stylesheet" href="test reservation.css">
+</head>
+<body>
+
+    <header>
+        <h1>FanWay Travel - Votre Réservation</h1>
+    </header>
+
+    <main class="booking-container">
+        
+        <input type="radio" name="booking-step" id="step-1" class="step-toggle" checked>
+        <input type="radio" name="booking-step" id="step-2" class="step-toggle">
+        <input type="radio" name="booking-step" id="step-3" class="step-toggle">
+        <input type="radio" name="booking-step" id="step-4" class="step-toggle">
+        <input type="radio" name="booking-step" id="step-5" class="step-toggle">
+
+        <form action="/submit-reservation" method="post">
+
+            <div class="steps-wrapper">
+
+                <section class="step" id="content-step-1">
+                    <h2>Étape 1: Choisissez un sport</h2>
+                    <div class="step-grid-4">
+                        
+                        <div class="selection-card-wrapper">
+                            <input type="radio" id="sport-foot" name="sport" value="football">
+                            <label for="sport-foot" class="selection-card">
+                                <h3>Football</h3>
+                                <ul>
+                                    <li>Coupe du Monde</li>
+                                    <li>Ligue des Champions</li>
+                                    <li>Coupes Continentales</li>
+                                </ul>
+                            </label>
+                        </div>
+
+                        <div class="selection-card-wrapper">
+                            <input type="radio" id="sport-basket" name="sport" value="basketball">
+                            <label for="sport-basket" class="selection-card">
+                                <h3>Basketball</h3>
+                                <ul>
+                                    <li>Finales NBA</li>
+                                    <li>Jeux Olympiques</li>
+                                    <li>Championnat du Monde</li>
+                                </ul>
+                            </label>
+                        </div>
+
+                        <div class="selection-card-wrapper">
+                            <input type="radio" id="sport-baseball" name="sport" value="baseball">
+                            <label for="sport-baseball" class="selection-card">
+                                <h3>Baseball</h3>
+                                <ul>
+                                    <li>World Series</li>
+                                    <li>MLB All-Star Game</li>
+                                    <li>WBC</li>
+                                </ul>
+                            </label>
+                        </div>
+
+                        <div class="selection-card-wrapper">
+                            <input type="radio" id="sport-tennis" name="sport" value="tennis">
+                            <label for="sport-tennis" class="selection-card">
+                                <h3>Tennis</h3>
+                                <ul>
+                                    <li>Roland-Garros</li>
+                                    <li>Wimbledon</li>
+                                    <li>US Open / Open d'Australie</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="nav-buttons">
+                        <label for="step-2" class="button next-step">Suivant</label>
+                    </div>
+                </section>
+
+                <section class="step" id="content-step-2">
+                    <h2>Étape 2: Détails du voyage (Exemple pour Football)</h2>
+                    <div class="step-grid-4">
+                        <fieldset class="selection-box">
+                            <legend>1. Événement précis</legend>
+                            <div class="radio-group">
+                                <input type="radio" id="event-cdm" name="event_choice" value="cdm"><label for="event-cdm">Coupe du Monde</label>
+                                <input type="radio" id="event-ldc" name="event_choice" value="ldc"><label for="event-ldc">Ligue des Champions</label>
+                                <input type="radio" id="event-cc" name="event_choice" value="cc"><label for="event-cc">Coupe Continentale</label>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="selection-box">
+                            <legend>2. Phase de l'événement</legend>
+                            <div class="radio-group">
+                                <input type="radio" id="phase-qualif" name="event_phase" value="qualif"><label for="phase-qualif">Qualifications</label>
+                                <input type="radio" id="phase-quart" name="event_phase" value="quart"><label for="phase-quart">Quarts de finale</label>
+                                <input type="radio" id="phase-fin" name="event_phase" value="fin"><label for="phase-fin">Jusqu'à la fin</label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="selection-box">
+                            <legend>3. Type de groupe</legend>
+                            <div class="radio-group">
+                                <input type="radio" id="type-famille" name="group_type" value="famille"><label for="type-famille">Familial</label>
+                                <input type="radio" id="type-amis" name="group_type" value="amis"><label for="type-amis">Entre amis</label>
+                                <input type="radio" id="type-ent" name="group_type" value="entreprise"><label for="type-ent">Entreprise</label>
+                            </div>
+                            <hr>
+                            <label for="personnes">Nombre de personnes:</label>
+                            <input type="number" id="personnes" name="personnes" min="1" max="20" value="1">
+                        </fieldset>
+
+                        <fieldset class="selection-box">
+                            <legend>4. Style de voyage</legend>
+                            <div class="radio-group">
+                                <input type="radio" id="style-visite" name="travel_style" value="visite"><label for="style-visite">Visites (Pays/Ville)</label>
+                                <input type="radio" id="style-sport" name="travel_style" value="sport"><label for="style-sport">Activités sportives</label>
+                                <input type="radio" id="style-mix" name="travel_style" value="mix"><label for="style-mix">Mélange des deux</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="nav-buttons">
+                        <label for="step-1" class="button prev-step">Précédent</label>
+                        <label for="step-3" class="button next-step">Suivant</label>
+                    </div>
+                </section>
+
+                <section class="step" id="content-step-3">
+                    <h2>Étape 3: Informations du responsable de la réservation</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="lead-prenom">Prénom</label>
+                            <input type="text" id="lead-prenom" name="lead_prenom">
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-nom">Nom</label>
+                            <input type="text" id="lead-nom" name="lead_nom">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="lead-email">Email</label>
+                            <input type="email" id="lead-email" name="lead_email">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="lead-tel">Téléphone</label>
+                            <input type="tel" id="lead-tel" name="lead_tel">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="lead-adresse">Adresse</label>
+                            <input type="text" id="lead-adresse" name="lead_adresse">
+                        </div>
+                    </div>
+                    <div class="nav-buttons">
+                        <label for="step-2" class="button prev-step">Précédent</label>
+                        <label for="step-4" class="button next-step">Suivant</label>
+                    </div>
+                </section>
+
+                <section class="step" id="content-step-4">
+                    <h2>Étape 4: Informations des participants</h2>
+                    <p class="warning">
+                        <strong>Note:</strong> En CSS pur, nous ne pouvons pas générer dynamiquement 
+                        le nombre de formulaires basé sur votre sélection précédente. 
+                        Ceci est un exemple statique.
+                    </p>
+
+                    <fieldset class="guest-form">
+                        <legend>Participant 1 (Responsable)</legend>
+                        <p>(Informations reprises de l'étape 3)</p>
+                    </fieldset>
+
+                    <fieldset class="guest-form">
+                        <legend>Participant 2</legend>
+                        <div class="form-grid">
+                            <div class="form-group"><label>Prénom</label><input type="text" name="guest2_prenom"></div>
+                            <div class="form-group"><label>Nom</label><input type="text" name="guest2_nom"></div>
+                            <div class="form-group"><label>Âge</label><input type="number" name="guest2_age" min="0"></div>
+                            <div class="form-group"><label>Num. Passeport/ID</label><input type="text" name="guest2_id"></div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="guest-form">
+                        <legend>Participant 3</legend>
+                        <div class="form-grid">
+                            <div class="form-group"><label>Prénom</label><input type="text" name="guest3_prenom"></div>
+                            <div class="form-group"><label>Nom</label><input type="text" name="guest3_nom"></div>
+                            <div class="form-group"><label>Âge</label><input type="number" name="guest3_age" min="0"></div>
+                            <div class="form-group"><label>Num. Passeport/ID</label><input type="text" name="guest3_id"></div>
+                        </div>
+                    </fieldset>
+
+                    <div class="nav-buttons">
+                        <label for="step-3" class="button prev-step">Précédent</label>
+                        <label for="step-5" class="button next-step">Aller au paiement</label>
+                    </div>
+                </section>
+
+                <section class="step" id="content-step-5">
+                    <h2>Étape 5: Paiement</h2>
+                    <p>Veuillez sélectionner votre méthode de paiement.</p>
+                    <div class="payment-selection">
+                        
+                        <div class="payment-card-wrapper">
+                            <input type="radio" id="pay-cb" name="payment_method" value="cb">
+                            <label for="pay-cb" class="payment-card">
+                                
+                                <span>Carte Bancaire</span>
+                            </label>
+                        </div>
+
+                        <div class="payment-card-wrapper">
+                            <input type="radio" id="pay-paypal" name="payment_method" value="paypal">
+                            <label for="pay-paypal" class="payment-card">
+                                
+                                <span>PayPal</span>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="nav-buttons">
+                        <label for="step-4" class="button prev-step">Précédent</label>
+                        </div>
+                </section>
+
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>

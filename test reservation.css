@@ -1,0 +1,280 @@
+/* --- Variables et styles de base --- */
+:root {
+    --primary-color: #004a99; /* Bleu FanWay */
+    --light-gray: #f2f2f2;
+    --border-color: #ddd;
+    --card-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-gray);
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.booking-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+/* --- LE SYSTEME DE "RADIO HACK" --- */
+
+/* 1. Cacher les radios de contrôle */
+.step-toggle {
+    display: none;
+}
+
+/* 2. Styles de base des étapes */
+.steps-wrapper {
+    position: relative;
+    /* La hauteur doit être définie pour que le fondu absolu fonctionne */
+    min-height: 500px;
+}
+
+.step {
+    /* Toutes les étapes sont superposées et invisibles par défaut */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+}
+
+/* 3. Afficher l'étape active (la magie) */
+/* Si la radio #step-1 est cochée, on cible son frère (~) .steps-wrapper
+   et à l'intérieur, on cible l'enfant #content-step-1 */
+#step-1:checked ~ .steps-wrapper #content-step-1,
+#step-2:checked ~ .steps-wrapper #content-step-2,
+#step-3:checked ~ .steps-wrapper #content-step-3,
+#step-4:checked ~ .steps-wrapper #content-step-4,
+#step-5:checked ~ .steps-wrapper #content-step-5 {
+    opacity: 1;
+    visibility: visible;
+    /* On le remet dans le flux normal pour qu'il prenne de la hauteur */
+    position: relative;
+}
+
+/* --- Grille de sélection (4 colonnes) --- */
+.step-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Cartes de sélection (Étape 1) --- */
+.selection-card-wrapper input[type="radio"] {
+    display: none;
+}
+
+.selection-card {
+    display: block;
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .selection-card:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 6px 15px rgba(0,74,153,0.15);
+        transform: translateY(-5px);
+    }
+
+    .selection-card h3 {
+        margin-top: 0;
+        border-bottom: 1px solid var(--light-gray);
+        padding-bottom: 0.5rem;
+    }
+
+    .selection-card ul {
+        padding-left: 20px;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+/* Style de la carte cochée */
+.selection-card-wrapper input[type="radio"]:checked + .selection-card {
+    border-color: var(--primary-color);
+    background-color: #f0f6ff; /* Bleu très clair */
+}
+
+/* --- Boîtes de sélection (Étape 2) --- */
+.selection-box {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+    .selection-box legend {
+        font-weight: bold;
+        color: var(--primary-color);
+        padding: 0 0.5rem;
+    }
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group label {
+    display: block; /* Met chaque option sur sa propre ligne */
+    margin-bottom: 0.5rem;
+}
+
+.selection-box input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box; /* Important */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* --- Formulaires (Étapes 3 & 4) --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-group.full-width {
+        grid-column: 1 / -1; /* Prend toute la largeur */
+    }
+
+    .form-group label {
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .form-group input {
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+.guest-form {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.warning {
+    background-color: #fffbe6;
+    border: 1px solid #ffe58f;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* --- Sélection Paiement (Étape 5) --- */
+.payment-selection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.payment-card-wrapper input[type="radio"] {
+    display: none;
+}
+
+.payment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 120px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .payment-card:hover {
+        border-color: var(--primary-color);
+    }
+
+.payment-card-wrapper input[type="radio"]:checked + .payment-card {
+    border-color: var(--primary-color);
+    background-color: #f0f6ff;
+}
+
+.payment-card img {
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.payment-card span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --- Boutons de navigation --- */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.next-step {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+    .next-step:hover {
+        background-color: #003366;
+    }
+
+.prev-step {
+    background-color: var(--light-gray);
+    color: #333;
+    border: 1px solid var(--border-color);
+}
+
+    .prev-step:hover {
+        background-color: #e0e0e0;
+    }

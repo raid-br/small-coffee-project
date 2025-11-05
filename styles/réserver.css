@@ -1,25 +1,163 @@
-* {
-    padding: 0px;
-    margin: 0px;
 }
 
-body header {
-    border: 2px solid black;
-    background: transparent;
-    backdrop-filter: blur(20px);
-}
 body {
-    background: url("../images/stadium.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    line-height: 1.6;
 }
-nav a {
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: white;
+
+/* --- Structure générale --- */
+header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--card-border);
     text-align: center;
-    width: 20%;
 }
-nav a.ici{
-	color : black;
+
+    header h1 {
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+main {
+    padding: 1rem;
 }
+
+.reservation-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+    .reservation-container h2,
+    .reservation-container p {
+        text-align: center;
+    }
+
+/* --- Style du formulaire --- */
+#booking-form {
+    margin-top: 2rem;
+}
+
+.event-selection {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .event-selection legend {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        width: 100%;
+        text-align: left;
+        border-bottom: 2px solid var(--light-gray);
+        padding-bottom: 0.5rem;
+    }
+
+/* --- Grille des cartes de sélection --- */
+.event-options {
+    display: grid;
+    /* Crée une grille réactive: 
+       - auto-fit: autant de colonnes que possible
+       - minmax: chaque colonne fait au minimum 200px et au max 1 fraction (1fr)
+    */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; /* Espace entre les cartes */
+}
+
+/* --- La technique de la carte cliquable --- */
+
+/* 1. On cache la vraie case radio */
+.event-card input[type="radio"] {
+    display: none;
+}
+
+/* 2. On stylise le <label> pour qu'il ressemble à une carte */
+.event-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%; /* Pour que toutes les cartes aient la même hauteur */
+    box-sizing: border-box; /* Inclut padding et bordure dans la hauteur */
+}
+
+    .event-label img { /* Style pour les icônes/images */
+        max-width: 60px;
+        margin-bottom: 1rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+.event-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.event-desc {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+/* 3. Style au survol (hover) */
+.event-label:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+    .event-label:hover img {
+        opacity: 1;
+    }
+
+/* 4. Style quand la radio est cochée (état :checked) */
+.event-card input[type="radio"]:checked + .event-label {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+    /* On change aussi la couleur des textes enfants */
+    .event-card input[type="radio"]:checked + .event-label .event-title,
+    .event-card input[type="radio"]:checked + .event-label .event-desc {
+        color: #fff;
+    }
+
+/* --- Bouton d'action --- */
+.form-actions {
+    text-align: right;
+    margin-top: 2rem;
+    border-top: 2px solid var(--light-gray);
+    padding-top: 1.5rem;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button[type="submit"]:hover {
+        background-color: #00457a; /* Un bleu plus foncé */
+    }
